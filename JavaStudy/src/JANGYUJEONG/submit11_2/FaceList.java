@@ -4,6 +4,6 @@ import java.util.ArrayList;
 
 public class FaceList {
 	
-	ArrayList<Face> faceList = ArraryList<>();
+	ArrayList<Face> faceList = new ArrayList<>();
 	
 }
