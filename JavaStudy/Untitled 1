@@ -1,0 +1,6 @@
+           INFO_NO      NUMBER(3,0)
+           PC_NO        VARCHAR2(10 BYTE)
+           NM           VARCHAR2(20 BYTE)
+           EMAIL        VARCHAR2(100 BYTE)
+           HOBBY        VARCHAR2(1000 BYTE)
+           UPDATE_DT    DATE 
