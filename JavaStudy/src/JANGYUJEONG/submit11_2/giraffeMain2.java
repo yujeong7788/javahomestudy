@@ -76,7 +76,13 @@ public class giraffeMain2 {
 					System.out.println(">>>");
 					
 				}else if(playNo == 2) {
-					//TODO 숫자맞추기
+					//TODO 숫자맞추기(1 ~ 50사이 랜덤숫자를 맞추기)
+					int rand = (int)(Math.random() * 50) + 1 ;
+					System.out.println(name + ": 내가 생각한 숫자를 맞춰봐!");
+					System.out.println(name + ": 1~50 사이의 정수이고");
+					System.out.println(name + ": 내가 생각한 숫자보다 크면 DOWN");
+					System.out.println(name + ": 내가 생각한 숫자보다 작으면 UP");
+					
 					
 				}else {
 					//TODO 음식퀴즈 ㅇ
