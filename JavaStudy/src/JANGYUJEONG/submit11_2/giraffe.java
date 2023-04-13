@@ -134,7 +134,7 @@ public class giraffe {
 	}
 
 	public String shortNeck() {
-		this.neck = this.neck - "\n|     |";
+		this.neck = this.neck.substring(0, this.neck.length()-9);
 		return neck;
-	
+	}
 }
