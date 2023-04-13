@@ -82,7 +82,7 @@ public class giraffe {
 		head = " ＊    ＊\n" + 
 				"  \\ __ /\n" + 
 				"(  ●  ●   )  "  +  "\n|     |" + "\n|     |";
-		height += (int)(Math.random() * 10) + 1;
+		height += (int)(Math.random() * 20) + 1;
 			if(gaze % 30 == 0) {
 				neck += "\n|     |";
 			}
@@ -91,7 +91,7 @@ public class giraffe {
 	
 	public String zz() {
 		this.gaze += 10;
-		height += (int)(Math.random() * 10) + 1;
+		height += (int)(Math.random() * 15) + 1;
 		head =  " ＊    ＊\n" + 
 				"  \\ __ /\n" + 
 				"(  ㅡ  ㅡ )  "  +  "\n|     |" + "\n|     |";
