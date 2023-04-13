@@ -78,7 +78,6 @@ public class giraffeMain2 {
 				}else if(playNo == 2) {
 					//TODO 숫자맞추기
 					
-					
 				}else {
 					//TODO 음식퀴즈 ㅇ
 					Collections.shuffle(foodList);
