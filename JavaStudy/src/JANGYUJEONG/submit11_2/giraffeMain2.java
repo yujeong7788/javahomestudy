@@ -1,10 +1,19 @@
 package JANGYUJEONG.submit11_2;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
+
+import ch09_class.quiz.Movie;
+import ch09_class.quiz.MovieDB;
 
 public class giraffeMain2 {
 
 	public static void main(String[] args) {
+		
+		FoodDB foodDB = FoodDB.getInstance();
+		
+		ArrayList<Food> foodList = foodDB.getFoodList();
 		
 		giraffe gira = new giraffe();
 		
@@ -68,8 +77,57 @@ public class giraffeMain2 {
 					
 				}else if(playNo == 2) {
 					//TODO 숫자맞추기
+					
 				}else {
 					//TODO 음식퀴즈
+					Collections.shuffle(foodList);
+					int score = 0;
+					
+					for(int i = 0; i < foodList.size(); i++) {
+						System.out.println(foodList.get(i).getIngredient());
+						System.out.println(">>> ");
+						String answer = scan.nextLine();
+						
+						if(answer.equals(foodList.get(i).getName())) {
+							System.out.println("정답~");
+							score += 3;
+							continue; // 다음 포문으로 넘김, 다음 문제로 넘어감
+						}
+						
+						System.out.println(foodList.get(i).getSize());
+						System.out.println(">>> ");
+						answer = scan.nextLine();
+						
+						if(answer.equals(foodList.get(i).getName())) {
+							System.out.println("정답~");
+							score += 2;
+							continue; // 다음 포문으로 넘김, 다음 문제로 넘어감
+						}
+						
+						System.out.println(foodList.get(i).getWord());
+						System.out.println(">>> ");
+						answer = scan.nextLine();
+						
+						if(answer.equals(foodList.get(i).getName())) {
+							System.out.println("정답~");
+							score += 1;
+							continue; // 다음 포문으로 넘김, 다음 문제로 넘어감
+						}
+						
+						System.out.println("땡! 다음 문제~");	
+					}
+					System.out.println("내 점수: "+ score);
+					if(score >= 15) {
+						gira.height += 10;
+						System.out.println(name + ": 와~~ 너무 잘 맞춘다!");
+					}else if(score >= 10) {
+						System.out.println(name + ": 조금 아깝다ㅠㅠ");
+					}else {
+						gira.height -= 10;
+						System.out.println(name + ": 재미없어ㅠㅠ");
+						System.out.println("실망한 " + name + "이의 키가 -10cm 줄어듭니다.");
+					}
+					
 				}
 			}else {
 				System.out.println("이름: " + name);

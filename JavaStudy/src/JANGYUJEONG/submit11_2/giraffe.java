@@ -133,6 +133,8 @@ public class giraffe {
 		}
 	}
 
-	
+	public String shortNeck() {
+		this.neck = this.neck - "\n|     |";
+		return neck;
 	
 }
