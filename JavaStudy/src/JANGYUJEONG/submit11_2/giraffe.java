@@ -1,6 +1,7 @@
 package JANGYUJEONG.submit11_2;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class giraffe {
 	String name;
@@ -78,11 +79,11 @@ public class giraffe {
 	}
 	
 	public String eat() {
-		this.gaze += 10;
+		this.gaze += 30;
 		head = " ＊    ＊\n" + 
 				"  \\ __ /\n" + 
 				"(  ●  ●   )  "  +  "\n|     |" + "\n|     |";
-		height += (int)(Math.random() * 20) + 1;
+		height += (int)(Math.random() * 26) + 15;
 			if(gaze % 30 == 0) {
 				neck += "\n|     |";
 			}
@@ -90,8 +91,8 @@ public class giraffe {
 	}
 	
 	public String zz() {
-		this.gaze += 10;
-		height += (int)(Math.random() * 15) + 1;
+		this.gaze += 20;
+		height += (int)(Math.random() * 21) + 10;
 		head =  " ＊    ＊\n" + 
 				"  \\ __ /\n" + 
 				"(  ㅡ  ㅡ )  "  +  "\n|     |" + "\n|     |";
@@ -103,7 +104,7 @@ public class giraffe {
 	
 	public String love() {
 		this.gaze += 20;
-		height += (int)(Math.random() * 10) + 1;
+		height += (int)(Math.random() * 21) + 10;
 		head =  " ＊    ＊\n" + 
 				"  \\ __ /\n" + 
 				"(  ♥  ♥   )  "  +  "\n|     |" + "\n|     |";
@@ -127,13 +128,77 @@ public class giraffe {
 	
 	
 	
-	public void rsp(int n) {
-		int giraRand = (int)(Math.random() * 3) + 1;
-		if(n == giraRand) {
-			System.out.println("비겼다");
-		}else if(n == 1 && giraRand == 2){
-			System.out.println("이겼다");
-		}
+	public void rsp(String name) {
+		// TODO 가위,바위,보 이모지로 바꾸기
+		// 1. 가위 2. 바위 3. 보
+
+		  while(true) {
+				Scanner scan = new Scanner(System.in);
+				System.out.println("가위~~ 바위~~ 보~~!");
+				System.out.println("1. 가위 | 2. 바위 | 3. 보");
+				System.out.println(">>>");
+				int rscNo = Integer.parseInt(scan.nextLine());
+				int giraRand = (int)(Math.random() * 3) + 1;
+
+				if(rscNo == 1) {
+					if(giraRand == 2) {
+						System.out.println(name + ": 바위!");
+						System.out.println("당신 : 가위!");
+						System.out.println(name+"(이)가 이겼습니다.");
+						this.gaze += 10;
+						height += 20;
+						break;
+					}else if(giraRand == 3) {
+						System.out.println(name + ": 보!");
+						System.out.println("당신 : 가위!");
+						System.out.println("당신이 이겼습니다.");
+						height -= 10;
+						this.gaze -= 10;
+						break;
+					}else {
+						System.out.println("비겼습니다.");
+
+					}
+				}else if(rscNo == 2) {
+					if(giraRand == 1) {
+						System.out.println(name + ": 가위!");
+						System.out.println("당신 : 바위!");
+						System.out.println("당신이 이겼습니다.");
+						height -= 10;
+						this.gaze -= 10;
+						break;
+					}else if(giraRand == 3) {
+						System.out.println(name + ": 보!");
+						System.out.println("당신 : 바위!");
+						System.out.println(name+"(이)가 이겼습니다.");
+						this.gaze += 10;
+						height += 10;
+						break;
+					}else {
+						System.out.println("비겼습니다.");
+
+					}
+				}else {
+					if(giraRand == 1) {
+						System.out.println(name + ": 가위!");
+						System.out.println("당신 : 보!");
+						System.out.println(name+"(이)가 이겼습니다.");
+						this.gaze += 10;
+						height += 15;
+						break;
+					}else if(giraRand == 2) {
+						System.out.println(name + ": 바위!");
+						System.out.println("당신 : 보!");
+						System.out.println("당신이 이겼습니다.");
+						height -= 10;
+						this.gaze -= 10;
+						break;
+					}else {
+						System.out.println("비겼습니다.");
+
+					}
+				}
+			}
 	}
 
 	public String shortNeck() {
@@ -162,6 +227,6 @@ public class giraffe {
 	public void sorry() {
 		head =  " ＊    ＊\n" + 
 				"  \\ __ /\n" + 
-				"(  •᷄     •᷅   )  "  +  "\n|     |" + "\n|     |";
+				"(  •᷄ •᷅ )  "  +  "\n|     |" + "\n|     |";
 	}
 }

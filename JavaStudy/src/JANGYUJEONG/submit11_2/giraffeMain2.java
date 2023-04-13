@@ -75,9 +75,11 @@ public class giraffeMain2 {
 				
 				if(playNo == 1) {
 					//TODO 가위바위보
-					System.out.println("가위~~ 바위~~ 보~~!");
-					System.out.println("1. 가위 | 2. 바위 | 3. 보");
-					System.out.println(">>>");
+//					System.out.println("가위~~ 바위~~ 보~~!");
+//					System.out.println("1. 가위 | 2. 바위 | 3. 보");
+//					System.out.println(">>>");
+//					int rscNo = Integer.parseInt(scan.nextLine());
+					gira.rsp(name);
 					
 				}else if(playNo == 2) {
 					//TODO 숫자맞추기(1 ~ 50사이 랜덤숫자를 맞추기)
@@ -93,24 +95,29 @@ public class giraffeMain2 {
 					System.out.println("내가 생각한 숫자는?");
 					System.out.println(">>>");
 					int answerNo = Integer.parseInt(scan.nextLine());
-						if(i <= 9) {
+						if(k <= 9) {
 							if(rand > answerNo) {
 								System.out.println("UP !!");
 							}else if(rand < answerNo) {
 								System.out.println("DOWN !!");
 							}else {
 								gira.height += 30;
+								gira.gaze += 30;
 								gira.happy();
 								gira.motion("정답!");
+								System.out.println("기쁜 " + name + "이의 키가 성장했습니다.");
 								break;
 								}
 						}else {
 							if(rand == answerNo) {
 								gira.height += 20;
+								gira.gaze += 20;
 								gira.happy();
 								gira.motion("정답!");
+								System.out.println("기쁜 " + name + "이의 키가 성장했습니다.");
 								break;
 							}else {
+								// TODO 여기 실행안됨.
 								gira.shortNeck();
 								gira.shortNeck();
 								gira.sad();
@@ -162,10 +169,12 @@ public class giraffeMain2 {
 					System.out.println("내 점수: "+ score);
 					if(score >= 15) {
 						gira.height += 30;
+						gira.gaze += 30;
 						gira.happy();
 						gira.motion("와~~ 너무 잘 맞춘다!");
 					}else if(score >= 10) {
 						gira.height += 20;
+						gira.gaze += 20;
 						gira.sorry();
 						gira.motion("조금 아깝다ㅠㅠ");
 					}else {
@@ -182,13 +191,16 @@ public class giraffeMain2 {
 				System.out.println("이름: " + name);
 				System.out.println("키: " + gira.height + "cm");
 				System.out.println(name + "(이)는 " + gira.state() + "상태입니다.");
+				i -= 1;
 			}
 			
 			if(i == 14) {
-				
-			System.out.println("2주일이 지났습니다");
+				System.out.println("\n***************************************************************************\n");	
+				System.out.println("                                 <2주일이 지났습니다>");
 				if(gira.height > 600) {
 					//TODO 지붕 뚫고 기린
+
+					System.out.println(name + "(이)는 지붕을 뚫는 기린이 되었습니다.");
 					System.out.println(" ＊    ＊   \n" + 
 							"  \\ __ /                       \n" + 
 							"(  ㅡ  ㅡ   )           🕊️\n" + 
@@ -208,12 +220,13 @@ public class giraffeMain2 {
 							"                                        |\n" + 
 							"                                        |\n" + 
 							"                                        |");
-			System.out.println(name + "(이)는 지붕을 뚫는 기린이 되었습니다.");
+			
 //			System.out.println(엔딩 string 출력해주기..); 
 				}else if(450 <= gira.height && gira.height <= 600) {
 					System.out.println("");
 					
 					//TODO 아프리카 기린
+					
 					System.out.println(name + "(이)는 아프리카 초원의 야생 기린이 되었습니다.");
 					System.out.println("                @@@@@@@@@@@@@@@@@\\  \\@@@@@|         |@@@@@@@@@@@@@@@@@@@@@\n" + 
 							"                 @@@@@@@@@@@@@@@@@ \\ \\ @@@|         |@@@@@@@@@@@@@@@@@@@@@@@\n" + 
@@ -239,6 +252,7 @@ public class giraffeMain2 {
 							"");
 				}else if(350 <= gira.height && gira.height < 450) {
 					//TODO 목이 짧아 슬픈
+					
 					System.out.println(name + "(이)는 목이 짧아 기린이 아니라 말이 되었습니다.");
 					System.out.println(" () __ ()                \n" + 
 							"(  ㅠ   ㅠ )      \n" + 
@@ -255,6 +269,7 @@ public class giraffeMain2 {
 							"");
 				}else {
 					//TODO 가출
+					
 					System.out.println("                    \n" + 
 							"   @@@@@@@@@@@     @@    \n" + 
 							"   @@@@@@@@@@@     @@    \n" + 
@@ -275,6 +290,7 @@ public class giraffeMain2 {
 							"다음엔 잘 키워주세요..\n" + 
 							"");
 				}
+				System.out.println("\n***************************************************************************\n");	
 			}
 		}
 
