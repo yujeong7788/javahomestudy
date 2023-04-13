@@ -19,6 +19,10 @@ public class Hello {
 		// 단축키 [Ctrl + Y]
 		System.out.println();
 		System.out.println();
+		
+		String a = "\n|     |";
+		System.out.println(a.length());
+
 	}
 
 }

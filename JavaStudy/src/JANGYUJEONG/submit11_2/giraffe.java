@@ -79,8 +79,11 @@ public class giraffe {
 	
 	public String eat() {
 		this.gaze += 10;
+		head = " ＊    ＊\n" + 
+				"  \\ __ /\n" + 
+				"(  ●  ●   )  "  +  "\n|     |" + "\n|     |";
 		height += (int)(Math.random() * 10) + 1;
-			if(gaze % 50 == 0) {
+			if(gaze % 30 == 0) {
 				neck += "\n|     |";
 			}
 		return neck;
@@ -134,7 +137,31 @@ public class giraffe {
 	}
 
 	public String shortNeck() {
-		this.neck = this.neck.substring(0, this.neck.length()-9);
+		if(this.neck.length() >= 8) {
+		this.neck = this.neck.substring(0, this.neck.length()-8);
+		}
 		return neck;
+	}
+	
+	public void griaAll() {
+		System.out.println(head + neck + body); 
+	}
+	
+	public void sad() {
+		head =  " ＊    ＊\n" + 
+				"  \\ __ /\n" + 
+				"(  ㅠ  ㅠ  )  "  +  "\n|     |" + "\n|     |";
+	}
+	
+	public void happy() {
+		head =  " ＊    ＊\n" + 
+				"  \\ __ /\n" + 
+				"(  ^   ^  )  "  +  "\n|     |" + "\n|     |";
+	}
+	
+	public void sorry() {
+		head =  " ＊    ＊\n" + 
+				"  \\ __ /\n" + 
+				"(  •᷄     •᷅   )  "  +  "\n|     |" + "\n|     |";
 	}
 }
