@@ -79,7 +79,7 @@ public class giraffeMain2 {
 					//TODO 숫자맞추기
 					
 				}else {
-					//TODO 음식퀴즈
+					//TODO 음식퀴즈 ㅇ
 					Collections.shuffle(foodList);
 					int score = 0;
 					
