@@ -114,6 +114,11 @@ public class giraffe {
 		return neck;
 	}
 	
+	public String longNeck() {
+		neck += "\n|     |";
+		return neck;
+	}
+	
 	public String state() {
 		ArrayList<String> state = new ArrayList<>();
 		state.add("행복한");
@@ -139,61 +144,68 @@ public class giraffe {
 				System.out.println(">>>");
 				int rscNo = Integer.parseInt(scan.nextLine());
 				int giraRand = (int)(Math.random() * 3) + 1;
-
+				
 				if(rscNo == 1) {
 					if(giraRand == 2) {
-						System.out.println(name + ": 바위!");
-						System.out.println("당신 : 가위!");
+						System.out.println(name + ": ✊");
+						System.out.println("당신 : ✌");
 						System.out.println(name+"(이)가 이겼습니다.");
 						this.gaze += 10;
-						height += 20;
+						height += 30;
 						break;
 					}else if(giraRand == 3) {
-						System.out.println(name + ": 보!");
-						System.out.println("당신 : 가위!");
+						System.out.println(name + ": 🖐");
+						System.out.println("당신 : ✌");
 						System.out.println("당신이 이겼습니다.");
 						height -= 10;
 						this.gaze -= 10;
 						break;
 					}else {
+						System.out.println(name + ": ✌");
+						System.out.println("당신 : ✌");
 						System.out.println("비겼습니다.");
 
 					}
 				}else if(rscNo == 2) {
 					if(giraRand == 1) {
-						System.out.println(name + ": 가위!");
-						System.out.println("당신 : 바위!");
+						System.out.println(name + ": ✌");
+						System.out.println("당신 : ✊");
 						System.out.println("당신이 이겼습니다.");
 						height -= 10;
 						this.gaze -= 10;
 						break;
 					}else if(giraRand == 3) {
-						System.out.println(name + ": 보!");
-						System.out.println("당신 : 바위!");
+						System.out.println(name + ": 🖐");
+						System.out.println("당신 : ✊");
 						System.out.println(name+"(이)가 이겼습니다.");
 						this.gaze += 10;
-						height += 10;
+						height += 30;
 						break;
 					}else {
+						System.out.println(name + ": ✊");
+						System.out.println("당신 : ✊");
 						System.out.println("비겼습니다.");
 
 					}
 				}else {
+					
 					if(giraRand == 1) {
-						System.out.println(name + ": 가위!");
-						System.out.println("당신 : 보!");
+						System.out.println(name + ": ✌");
+						System.out.println("당신 : 🖐");
 						System.out.println(name+"(이)가 이겼습니다.");
 						this.gaze += 10;
-						height += 15;
+						height += 35;
 						break;
 					}else if(giraRand == 2) {
-						System.out.println(name + ": 바위!");
-						System.out.println("당신 : 보!");
+						System.out.println(name + ": ✊");
+						System.out.println("당신 : 🖐");
 						System.out.println("당신이 이겼습니다.");
 						height -= 10;
 						this.gaze -= 10;
 						break;
 					}else {
+						System.out.println(name + ": 🖐");
+						System.out.println("당신 : 🖐");
 						System.out.println("비겼습니다.");
 
 					}

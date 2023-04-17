@@ -16,11 +16,16 @@ public class giraffeMain2 {
 		ArrayList<Food> foodList = foodDB.getFoodList();
 		
 		giraffe gira = new giraffe();
-		
+		System.out.println("\n===================<<기린 키우기 게임>>==================\n");
+		System.out.println("환영합니다~!");
 		System.out.println("아기 기린을 분양 받았습니다.");
 		System.out.println("2주 동안 잘 키워주세요 ^^\n");
+		
+		System.out.println("=========================================================\n");
+		
 		System.out.println("아기 기린의 이름을 지어주세요");
 		System.out.println(">>>");
+		System.out.println("\n=========================================================\n");
 		
 		Scanner scan = new Scanner(System.in);
 		
@@ -28,21 +33,24 @@ public class giraffeMain2 {
 		
 		
 		gira.level1(name);
+		System.out.println(name+": 반가워!");
 		
 		for(int i = 1; i <= 14; i++) {
-			System.out.println("=========================================================");
-			System.out.println( i +"일차");
+			System.out.println("\n=========================================================");
+			System.out.println("                       <"+ i +"일차>\n");
 			System.out.println( name +"(이)에게 무엇을 해주시겠습니까?");
 			System.out.println("1. 나뭇잎 주기 | 2. 예뻐해주기 | 3. 재우기 | 4. 놀아주기 | 5. 현재 상태");
 			System.out.println(">>>");
 			System.out.println("=========================================================\n");
 			
 			int select = Integer.parseInt(scan.nextLine());
+
 			
 			if(select == 1) {
 				
 				//TODO 밥주기
 				gira.eat();
+				gira.longNeck();
 				System.out.println(name + "(이)가 " + gira.height + "cm로 성장했습니다.");
 				gira.motion("냠냠 맛있다🌿");
 				
@@ -51,6 +59,7 @@ public class giraffeMain2 {
 				
 				//TODO 예뻐해주기
 				gira.height += 10;
+				gira.longNeck();
 				gira.love();
 				System.out.println(name + "(이)가 " + gira.height + "cm로 성장했습니다.");
 				gira.motion("행복해요 ♥♥♥ ");
@@ -58,6 +67,7 @@ public class giraffeMain2 {
 			}else if(select == 3) {
 				//TODO 재우기
 				gira.height += 20;
+				gira.longNeck();
 				gira.zz();
 				System.out.println(name + "(이)가 " + gira.height + "cm로 성장했습니다.");
 				gira.motion("zzzZZZZ ");
@@ -65,14 +75,13 @@ public class giraffeMain2 {
 				
 			}else if(select == 4) {
 				//TODO 놀아주기
-				System.out.println("=========================================================");
+				System.out.println("\n=========================================================");
 				System.out.println(name +"(이)와 어떤 놀이를 하시겠습니까?");
 				System.out.println("1. 가위바위보 | 2. 숫자맞추기 | 3. 음식퀴즈");
 				System.out.println(">>>");
 				System.out.println("=========================================================");
 				
 				int playNo = Integer.parseInt(scan.nextLine());
-				
 				if(playNo == 1) {
 					//TODO 가위바위보
 //					System.out.println("가위~~ 바위~~ 보~~!");
@@ -84,15 +93,15 @@ public class giraffeMain2 {
 				}else if(playNo == 2) {
 					//TODO 숫자맞추기(1 ~ 50사이 랜덤숫자를 맞추기)
 					int rand = (int)(Math.random() * 50) + 1 ;
-					System.out.println("=========================================================");
+					System.out.println("\n=========================================================");
 					System.out.println(name + ": 내가 생각한 숫자를 맞춰봐!");
 					System.out.println("        1~50 사이의 정수이고");
 					System.out.println("        내가 생각한 숫자보다 크면 DOWN");
 					System.out.println("        내가 생각한 숫자보다 작으면 UP");
 					System.out.println("        기회는 10번이야! 화이팅!");
 					System.out.println("=========================================================");
-					for(int k = 0; k <=10; k++) {
-					System.out.println("내가 생각한 숫자는?");
+					for(int k = 1; k <=10; k++) {
+					System.out.println(name + ":내가 생각한 숫자는?");
 					System.out.println(">>>");
 					int answerNo = Integer.parseInt(scan.nextLine());
 						if(k <= 9) {
@@ -101,18 +110,20 @@ public class giraffeMain2 {
 							}else if(rand < answerNo) {
 								System.out.println("DOWN !!");
 							}else {
-								gira.height += 30;
+								gira.height += 40;
 								gira.gaze += 30;
 								gira.happy();
+								gira.longNeck();
 								gira.motion("정답!");
 								System.out.println("기쁜 " + name + "이의 키가 성장했습니다.");
 								break;
 								}
 						}else {
 							if(rand == answerNo) {
-								gira.height += 20;
+								gira.height += 30;
 								gira.gaze += 20;
 								gira.happy();
+								gira.longNeck();
 								gira.motion("정답!");
 								System.out.println("기쁜 " + name + "이의 키가 성장했습니다.");
 								break;
@@ -168,22 +179,25 @@ public class giraffeMain2 {
 					}
 					System.out.println("내 점수: "+ score);
 					if(score >= 15) {
-						gira.height += 30;
+						gira.height += 35;
 						gira.gaze += 30;
 						gira.happy();
+						gira.longNeck();
 						gira.motion("와~~ 너무 잘 맞춘다!");
+						System.out.println("기쁜 " + name + "이의 키가 성장했습니다.");
 					}else if(score >= 10) {
-						gira.height += 20;
+						gira.height += 30;
 						gira.gaze += 20;
 						gira.sorry();
 						gira.motion("조금 아깝다ㅠㅠ");
+						System.out.println("기쁜 " + name + "이의 키가 조금 성장했습니다.");
 					}else {
 						gira.height -= 20;
-						System.out.println("실망한 " + name + "이의 키가 줄어듭니다.");
 						gira.shortNeck();
 						gira.shortNeck();
 						gira.sad();
 						gira.motion("실망이야..");
+						System.out.println("실망한 " + name + "이의 키가 줄어듭니다.");
 					}
 					
 				}
@@ -197,10 +211,10 @@ public class giraffeMain2 {
 			if(i == 14) {
 				System.out.println("\n***************************************************************************\n");	
 				System.out.println("                                 <2주일이 지났습니다>");
-				if(gira.height > 600) {
+				if(gira.height >= 600) {
 					//TODO 지붕 뚫고 기린
 
-					System.out.println(name + "(이)는 지붕을 뚫는 기린이 되었습니다.");
+					System.out.println(name + "(이)는 지붕을 뚫는 기린이 되었습니다.\n");
 					System.out.println(" ＊    ＊   \n" + 
 							"  \\ __ /                       \n" + 
 							"(  ㅡ  ㅡ   )           🕊️\n" + 
@@ -222,17 +236,17 @@ public class giraffeMain2 {
 							"                                        |");
 			
 //			System.out.println(엔딩 string 출력해주기..); 
-				}else if(450 <= gira.height && gira.height <= 600) {
+				}else if(450 <= gira.height && gira.height < 600) {
 					System.out.println("");
 					
 					//TODO 아프리카 기린
 					
-					System.out.println(name + "(이)는 아프리카 초원의 야생 기린이 되었습니다.");
+					System.out.println(name + "(이)는 아프리카 초원의 야생 기린이 되었습니다.\n");
 					System.out.println("                @@@@@@@@@@@@@@@@@\\  \\@@@@@|         |@@@@@@@@@@@@@@@@@@@@@\n" + 
 							"                 @@@@@@@@@@@@@@@@@ \\ \\ @@@|         |@@@@@@@@@@@@@@@@@@@@@@@\n" + 
 							" ＊    ＊        @@@@@@@@@@@@@@@@@@ \\ \\ @@|         |@@@@@@@@@@@@@@@@@@@@@@@@\n" + 
 							"  \\ __ /           @@@@@@@@@@@@@@@@@ \\ \\ @|         |@@@@@@@@@@@@@@@@@@@@@@@@@@\n" + 
-							"(  ●  ●   )       @@@@@@@@@@@@@@@@@@\\ \\ |         |@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" + 
+							"(  ●  ●   )         @@@@@@@@@@@@@@@@@@\\ \\ |         |@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" + 
 							"|     |               @@@@@@@@@@@@@@@@@\\ \\          |@@@@@@@@@@@@@@@@@@@@@@@@@\n" + 
 							"|     |                      @@@@@@@@@@@\\           |  / /@@@@@@@@@@@@@@@@@@@@\n" + 
 							"|     |                          @@@@@@@@ |         | / / @@@@@@@@@@@@@@@@@@\n" + 
@@ -253,7 +267,7 @@ public class giraffeMain2 {
 				}else if(350 <= gira.height && gira.height < 450) {
 					//TODO 목이 짧아 슬픈
 					
-					System.out.println(name + "(이)는 목이 짧아 기린이 아니라 말이 되었습니다.");
+					System.out.println(name + "(이)는 목이 짧아 기린이 아니라 말이 되었습니다.\n");
 					System.out.println(" () __ ()                \n" + 
 							"(  ㅠ   ㅠ )      \n" + 
 							"|     |         \n" + 
