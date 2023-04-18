@@ -232,21 +232,38 @@ public class ApiDateMain {
 		System.out.println(diff + "일 차이");
 		
 		
-		System.out.println("\n==================================\n");
+		System.out.println("\n=================디데이 계산기=================\n");
 		
 		// 디데이 계산기
 		String dday = "2023.05.01";
-		
-		
-		
+//		String today = "2023.04.18";
+//		sdf = new SimpleDateFormat("yyyy.MM.dd");
+//		Date ddayDate = sdf.parse(dday);
+//		Date todayDate = sdf.parse(today);
+//		long ddayDiff = todayDate.getTime() - ddayDate.getTime();
+//		System.out.println("근로자의 날까지 d-day = " + ddayDiff/(1000*60*60*24));
+//		
+		Date ddayToday = new Date();
+		sdf = new SimpleDateFormat("yyyy.MM.dd");
+		Date ddayDate = sdf.parse(dday);
+//		System.out.println(ddayToday);
+		String strDdayToday = sdf.format(ddayToday);
+//		System.out.println(strDdayToday);
+		Date ddayTodayDate = sdf.parse(strDdayToday);
 		// 실행 결과
 		// 근로자의 날까지 d-day = -13
-		
-		dday = "2023.03.20";
-		
-		
+		long ddayDiff = ddayTodayDate.getTime() - ddayDate.getTime();
+		System.out.println("근로자의 날까지 d-day = " + ddayDiff/(1000*60*60*24));
 		// 실행 결과
 		// 여러분의 교육 기간 = +29
+		dday = "2023.03.20";
+		ddayDate = sdf.parse(dday);
+		long ddayDiff2 = ddayTodayDate.getTime() - ddayDate.getTime();
+		System.out.println("여러분의 교육 기간 = " + ddayDiff2/(1000*60*60*24));
+		
+//		long ddayDiff2 = todayDate.getTime() - ddayDate.getTime();
+//		System.out.println("여러분의 교육 기간 = " + ddayDiff2/(1000*60*60*24));
+//		
 		
 		
 	}
