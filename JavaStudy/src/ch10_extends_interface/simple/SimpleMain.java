@@ -9,6 +9,7 @@ public class SimpleMain {
 		//Object --> 클래스확인용
 		
 		Child baby = new Child();
+		Parent parent = (Parent)baby; // 자동 형변환 하며 Parent에 담은것
 		System.out.println(baby);
 		
 		// Parent가 가진 것 모두 가짐, private에는 접근 불가
