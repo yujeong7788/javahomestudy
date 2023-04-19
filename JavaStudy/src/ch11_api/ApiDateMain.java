@@ -191,7 +191,7 @@ public class ApiDateMain {
 		// 초
 		System.out.println(anyCal.get(Calendar.SECOND));
 		
-		System.out.println("\n==================================\n");
+		System.out.println("\n===========================날짜 연산=============================\n");
 		
 		// 날짜 연산
 		String oneDay = "2023.04.06 12:22:45";
@@ -236,7 +236,8 @@ public class ApiDateMain {
 		
 		// 디데이 계산기
 		String dday = "2023.05.01";
-//		String today = "2023.04.18";
+		
+//		String today = "2023.04.18";  ==> 고정값을 준 하드 코딩 (개발 초반에 사용)
 //		sdf = new SimpleDateFormat("yyyy.MM.dd");
 //		Date ddayDate = sdf.parse(dday);
 //		Date todayDate = sdf.parse(today);
@@ -247,6 +248,8 @@ public class ApiDateMain {
 		sdf = new SimpleDateFormat("yyyy.MM.dd");
 		Date ddayDate = sdf.parse(dday);
 //		System.out.println(ddayToday);
+		// ddayToday는 시간까지 있기때문에 디데이가 시간 단위 까지 계산됨 !
+		// 00시 00분 00초로 만들어주어야한다.
 		String strDdayToday = sdf.format(ddayToday);
 //		System.out.println(strDdayToday);
 		Date ddayTodayDate = sdf.parse(strDdayToday);
@@ -264,7 +267,78 @@ public class ApiDateMain {
 //		long ddayDiff2 = todayDate.getTime() - ddayDate.getTime();
 //		System.out.println("여러분의 교육 기간 = " + ddayDiff2/(1000*60*60*24));
 //		
+		System.out.println("\n======================================================\n");
 		
+		// 날짜 연산
+		// 한 날짜를 기준으로 날짜를 더하거나 빼기
+		// Calendar 가 편하다
+		
+		Calendar toCal = Calendar.getInstance();
+		sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+		System.out.println(sdf.format(toCal.getTime()));
+		
+		// 3일 뒤
+		toCal.add(Calendar.DATE, 3); // date에 대해서 3일 증가 시킨다.
+		System.out.println(sdf.format(toCal.getTime()));
+		
+		// 57일 뒤
+		toCal.add(Calendar.DATE, 57); // date에 대해서 57일 증가 시킨다.
+		System.out.println(sdf.format(toCal.getTime()));
+		
+		// 7일 전
+		toCal.add(Calendar.DATE, -7); // date에 대해서 7일 감소 시킨다. 
+		System.out.println(sdf.format(toCal.getTime()));
+		
+		// 11개월 뒤
+		toCal.add(Calendar.MONTH, 11); // 11개월 증가 시킨다.
+		System.out.println(sdf.format(toCal.getTime()));
+		
+		
+		System.out.println("\n======================================================\n");
+		
+		// 달력 만들기
+		int year = 2023;
+		int month = 5;
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(year, month-1, 1);
+		System.out.println(sdf.format(calendar.getTime()));
+		
+		// 해당 달의 마지막 일자 얻기
+		int lastDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+		System.out.println(lastDay);
+		
+		// 해당 달의 시작 요일 얻기
+		// 1: 일요일, 2: 월요일, 3: 화요일, 4: 수요일, 5: 목요일, 6: 금요일, 7: 토요일
+		int startDay = calendar.get(Calendar.DAY_OF_WEEK);
+		System.out.println(startDay);
+		
+		System.out.println(year + "년 " + month + "월 달력");
+		System.out.println("일\t월\t화\t수\t목\t금\t토");
+		
+		int current = 1;
+		for(int i = 0; i < 42; i++) {
+			if(i < startDay -1) {
+				System.out.print("\t");
+			}else {
+				System.out.printf("%2d\t", current);
+				current++;
+				
+				if(current > lastDay) {
+					break;
+				}
+			}
+			
+			
+			// i가 6, 13, 20, 27, 34 일때 출력 후 줄바꿈
+			if(i % 7 == 6) {
+				System.out.println();
+			}
+			
+		}
+		
+		System.out.println("\n======================================================\n");
+		// 과제ㅠㅠ..
 		
 	}
 
