@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 import ch09_class.homepage.Board;
+import ch10_extends_interface.starcraft.StarUnit;
 
 public class BoardMain {
 
@@ -28,6 +29,11 @@ public class BoardMain {
 			int intSelect = Integer.parseInt(select);
 			if(intSelect == 1) {
 				// TODO 글 목록 출력
+				for(int i = 0; i < boardList.size(); i++) {
+					boardList.get(i).setNo(i+1);
+					System.out.println(boardList.get(i));
+				}
+				
 			}else if(intSelect == 2) {
 				// TODO 글 작성
 				
@@ -35,12 +41,15 @@ public class BoardMain {
 				String title = scan.nextLine();
 				System.out.println("글 내용을 입력해주세요: ");
 				String contents = scan.nextLine();
+				
 				// 입력시 
 				Date date = new Date();
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 				String strDate = sdf.format(date);
 				
-				Board board = new Board(0, title, strDate , contents);
+				BoardUnit board = new BoardUnit(0, title, strDate , contents);
+				BoardUnit cBoard = board;
+				boardList.add(board);
 				
 			}else {
 				// TODO 종료
@@ -48,6 +57,11 @@ public class BoardMain {
 				break;
 			}
 		}
+		
+		// 2번 문제
+		
+		
+		
 		
 	}
 

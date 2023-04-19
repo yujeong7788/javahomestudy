@@ -8,8 +8,6 @@ public class BoardUnit {
 	private int no = 0;
 	private String title;
 	private String date;
-	
-	
 	private String content;
 	
 	
@@ -27,7 +25,7 @@ public class BoardUnit {
 	
 	@Override
 	public String toString() {
-		return "BoardUnit [no=" + no + ", title=" + title + ", date=" + date + ", content=" + content + "]";
+		return "[" + no + "." + " | " + title + " | " + date + "]";
 	}
 
 	public int getNo() {

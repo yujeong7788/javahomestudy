@@ -3,7 +3,6 @@ package JANGYUJEONG.submit12;
 public class Board extends BoardUnit{
 	
 	
-	
 	public Board() {
 		super();
 		
