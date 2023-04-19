@@ -176,7 +176,7 @@ public class ApiDateMain {
 		System.out.println(anyCal.get(Calendar.YEAR));
 		
 		// 월
-		System.out.println(anyCal.get(Calendar.MONTH)+1);
+		System.out.println("month:"+(anyCal.get(Calendar.MONTH)+1));
 		
 		// 일
 		System.out.println(anyCal.get(Calendar.DATE));
@@ -237,16 +237,17 @@ public class ApiDateMain {
 		// 디데이 계산기
 		String dday = "2023.05.01";
 		
-//		String today = "2023.04.18";  ==> 고정값을 준 하드 코딩 (개발 초반에 사용)
-//		sdf = new SimpleDateFormat("yyyy.MM.dd");
-//		Date ddayDate = sdf.parse(dday);
-//		Date todayDate = sdf.parse(today);
+		String today = "2023.04.30"; // ==> 고정값을 준 하드 코딩 (개발 초반에 사용)
+		sdf = new SimpleDateFormat("yyyy.MM.dd");
+		Date ddayDate = sdf.parse(dday);
+		Date todayDate = sdf.parse(today);
+		System.out.println("하드코딩: "+ todayDate.getTime());
 //		long ddayDiff = todayDate.getTime() - ddayDate.getTime();
 //		System.out.println("근로자의 날까지 d-day = " + ddayDiff/(1000*60*60*24));
 //		
 		Date ddayToday = new Date();
 		sdf = new SimpleDateFormat("yyyy.MM.dd");
-		Date ddayDate = sdf.parse(dday);
+//		Date ddayDate = sdf.parse(dday);
 //		System.out.println(ddayToday);
 		// ddayToday는 시간까지 있기때문에 디데이가 시간 단위 까지 계산됨 !
 		// 00시 00분 00초로 만들어주어야한다.
@@ -338,7 +339,7 @@ public class ApiDateMain {
 		}
 		
 		System.out.println("\n======================================================\n");
-		// 과제ㅠㅠ..
+		//
 		
 	}
 

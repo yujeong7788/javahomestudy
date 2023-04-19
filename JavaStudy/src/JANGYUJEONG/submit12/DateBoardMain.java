@@ -81,6 +81,79 @@ public class DateBoardMain {
 			}
 
 			// 4. dbList에서 최근 한달 내(오늘기준 30일 전까지)로 작성된 게시글만 출력해주세요.
+			System.out.println("\n===================================\n");
+			
+			Date today = new Date(); //오늘
+			String strToday = sdf.format(today);
+			Date todayDate = sdf.parse(strToday);
+			long longToday = todayDate.getTime();
+			
+			System.out.println("최근 한달 내 게시글");
+			for(int i = 0; i < dbList.size(); i++) {
+				if((longToday - dbList.get(i).getLongdate())/(1000*60*60*24) < 30) {
+					System.out.println(dbList.get(i));
+				}
+			}
+			
+			// 5.dbList에서 이번달에 작성된 게시글만 출력해주세요. 
+			Calendar firstThisMonth = Calendar.getInstance();
+			firstThisMonth.set(firstThisMonth.get(Calendar.YEAR),firstThisMonth.get(Calendar.MONTH),firstThisMonth.getActualMinimum(Calendar.DAY_OF_MONTH));
+			Date ftm = firstThisMonth.getTime();
+			String strFTM = sdf.format(ftm);
+			Date strFTMDate = sdf.parse(strFTM);
+//			System.out.println(strFTMDate.getTime());
+			
+			Calendar lastThisMonth = Calendar.getInstance();
+			lastThisMonth.set(lastThisMonth.get(Calendar.YEAR),lastThisMonth.get(Calendar.MONTH),lastThisMonth.getActualMaximum(Calendar.DAY_OF_MONTH));
+			Date ltm = firstThisMonth.getTime();
+			String strLTM = sdf.format(ltm);
+			Date strLTMDate = sdf.parse(strLTM);
+//			System.out.println("ltm"+ltm);
+//			System.out.println("1682780400000 비교비교" + strLTMDate.getTime());
+			
+			System.out.println("\n===================================\n");
+			System.out.println("이번달 작성된 게시물");
+//			for(int i = 0; i < dbList.size(); i++) {
+//				if(dbList.get(i).getLongdate() >= strFTMDate.getTime() && (dbList.get(i).getLongdate() <= strLTMDate.getTime())){
+//					System.out.println(dbList.get(i));
+//				}
+//			}
+			for(int i = 0; i < dbList.size(); i++) {
+				if(dbList.get(i).getLongdate() >= strFTMDate.getTime()){
+					System.out.println(dbList.get(i));
+				}
+			}
+			
+			
+			// dbList에서 2월에 작성된 게시글만 출력해주세요.
+			System.out.println("2월에 작성된 게시글");
+			for(int i = 0; i < dbList.size(); i++) {
+				String temp = dbList.get(i).getDate();
+				Calendar calTemp = Calendar.getInstance();
+				calTemp.setTime(sdf.parse(temp));
+				if(calTemp.get(Calendar.MONTH) == 1) {
+					System.out.println(dbList.get(i));
+				}
+			}
+			
+			
+			//2022년 2월 14일부터 2022년 3월 21일까지 작성된 게시글만 출력해주세요.
+			String start = "2022.02.14 00:00:00";
+			Date startDate = sdf.parse(start);
+			long startLong = startDate.getTime();
+			String end = "2022.3.21 00:00:00";
+			Date endDate = sdf.parse(end);
+			long endLong = endDate.getTime();
+			
+//			System.out.println(endLong);
+//			System.out.println("테스트"+startLong + dbList.get(3).getLongdate());
+			// 왜안되지..ㅠㅠ
+			System.out.println("2022.02.12 - 2022.03.21 사이 게시물");
+			for(int i = 0; i < dbList.size(); i++) {
+				if( startLong < dbList.get(i).getLongdate() && dbList.get(i).getLongdate() < endLong) {
+					System.out.println(dbList.get(i));
+				}
+			}
 			
 			
 			
