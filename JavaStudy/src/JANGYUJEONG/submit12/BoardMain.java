@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-import ch09_class.homepage.Board;
 import ch10_extends_interface.starcraft.StarUnit;
 
 public class BoardMain {
@@ -47,7 +46,7 @@ public class BoardMain {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 				String strDate = sdf.format(date);
 				
-				BoardUnit board = new BoardUnit(0, title, strDate , contents);
+				BoardUnit board = new Board(0, title, strDate , contents);
 				BoardUnit cBoard = board;
 				boardList.add(board);
 				

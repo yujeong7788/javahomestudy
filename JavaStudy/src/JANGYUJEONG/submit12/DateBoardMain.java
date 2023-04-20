@@ -138,17 +138,16 @@ public class DateBoardMain {
 			
 			
 			//2022년 2월 14일부터 2022년 3월 21일까지 작성된 게시글만 출력해주세요.
-			String start = "2022.02.14 00:00:00";
+			String start = "2023.02.14 00:00:00";
 			Date startDate = sdf.parse(start);
 			long startLong = startDate.getTime();
-			String end = "2022.3.21 00:00:00";
+			String end = "2023.3.21 00:00:00";
 			Date endDate = sdf.parse(end);
 			long endLong = endDate.getTime();
 			
 //			System.out.println(endLong);
 //			System.out.println("테스트"+startLong + dbList.get(3).getLongdate());
-			// 왜안되지..ㅠㅠ
-			System.out.println("2022.02.12 - 2022.03.21 사이 게시물");
+			System.out.println("2023.02.12 - 2023.03.21 사이 게시물");
 			for(int i = 0; i < dbList.size(); i++) {
 				if( startLong < dbList.get(i).getLongdate() && dbList.get(i).getLongdate() < endLong) {
 					System.out.println(dbList.get(i));
@@ -156,6 +155,7 @@ public class DateBoardMain {
 			}
 			
 			
+		
 			
 
 	}
