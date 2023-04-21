@@ -97,33 +97,35 @@ public class DateBoardMain {
 			
 			// 5.dbList에서 이번달에 작성된 게시글만 출력해주세요. 
 			Calendar firstThisMonth = Calendar.getInstance();
-			firstThisMonth.set(firstThisMonth.get(Calendar.YEAR),firstThisMonth.get(Calendar.MONTH),firstThisMonth.getActualMinimum(Calendar.DAY_OF_MONTH));
+			firstThisMonth.set(firstThisMonth.get(Calendar.YEAR),firstThisMonth.get(Calendar.MONTH),1);
 			Date ftm = firstThisMonth.getTime();
 			String strFTM = sdf.format(ftm);
 			Date strFTMDate = sdf.parse(strFTM);
-//			System.out.println(strFTMDate.getTime());
+			System.out.println("첫일"+ftm);
+			
 			
 			Calendar lastThisMonth = Calendar.getInstance();
+//			System.out.println(lastThisMonth.getActualMaximum(Calendar.DAY_OF_MONTH));
 			lastThisMonth.set(lastThisMonth.get(Calendar.YEAR),lastThisMonth.get(Calendar.MONTH),lastThisMonth.getActualMaximum(Calendar.DAY_OF_MONTH));
-			Date ltm = firstThisMonth.getTime();
+			Date ltm = lastThisMonth.getTime();
 			String strLTM = sdf.format(ltm);
 			Date strLTMDate = sdf.parse(strLTM);
-//			System.out.println("ltm"+ltm);
+//			System.out.println("strLTM"+strLTM);
 //			System.out.println("1682780400000 비교비교" + strLTMDate.getTime());
 			
 			System.out.println("\n===================================\n");
 			System.out.println("이번달 작성된 게시물");
-//			for(int i = 0; i < dbList.size(); i++) {
-//				if(dbList.get(i).getLongdate() >= strFTMDate.getTime() && (dbList.get(i).getLongdate() <= strLTMDate.getTime())){
-//					System.out.println(dbList.get(i));
-//				}
-//			}
 			for(int i = 0; i < dbList.size(); i++) {
-				if(dbList.get(i).getLongdate() >= strFTMDate.getTime()){
+				if(dbList.get(i).getLongdate() >= strFTMDate.getTime() && (dbList.get(i).getLongdate() <= strLTMDate.getTime())){
 					System.out.println(dbList.get(i));
 				}
 			}
-			
+//			for(int i = 0; i < dbList.size(); i++) {
+//				if(dbList.get(i).getLongdate() >= strFTMDate.getTime()){
+//					System.out.println(dbList.get(i));
+//				}
+//			}
+//			
 			
 			// dbList에서 2월에 작성된 게시글만 출력해주세요.
 			System.out.println("2월에 작성된 게시글");
@@ -141,7 +143,7 @@ public class DateBoardMain {
 			String start = "2023.02.14 00:00:00";
 			Date startDate = sdf.parse(start);
 			long startLong = startDate.getTime();
-			String end = "2023.3.21 00:00:00";
+			String end = "2023.3.21 23:59:59";
 			Date endDate = sdf.parse(end);
 			long endLong = endDate.getTime();
 			
