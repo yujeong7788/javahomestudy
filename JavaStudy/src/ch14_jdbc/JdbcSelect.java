@@ -10,7 +10,7 @@ public class JdbcSelect {
 
 	public static void main(String[] args) {
 		
-		// 1. 드라이버 로딩
+		// 1. 드라이버 로딩 (가장 오래걸림)
 		// (프로젝트 내에서 단 한번만 실행이 되면 됨)
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -30,7 +30,7 @@ public class JdbcSelect {
 		
 		
 		try {
-			// 2. 커넥션 객체 생성
+			// 2. 커넥션 객체 생성 (두번째 오래걸림)
 			// 오라클 DB와 접속이 된 객체를 리턴
 			conn = DriverManager.getConnection(url,id,pw);
 			System.out.println("DB 커넥션 성공");
@@ -62,10 +62,10 @@ public class JdbcSelect {
 				String stuName = rs.getString("stu_name");
 				int stuScore = rs.getInt("stu_score");
 				
-				System.out.println("아이디: " + stuId);
-				System.out.println("비밀번호: " + stuPw);
-				System.out.println("이름: " + stuName);
-				System.out.println("점수: " + stuScore);
+				System.out.print(" 아이디: " + stuId);
+				System.out.print(" 비밀번호: " + stuPw);
+				System.out.print(" 이름: " + stuName);
+				System.out.println(" 점수: " + stuScore);
 			}
 			
 			// 연결 종료 ( 에러시 catch로 가서 close 안될 수 도)

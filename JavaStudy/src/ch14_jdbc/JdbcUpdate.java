@@ -25,7 +25,7 @@ public class JdbcUpdate {
 		
 		Connection conn = null;
 		PreparedStatement ps = null;
-		ResultSet rs = null;
+		ResultSet rs = null; // 쿼리 수행한 결과값 반환
 
 		
 		try {
