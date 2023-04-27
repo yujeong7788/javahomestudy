@@ -53,19 +53,19 @@ public class StudentService {
 		}
 		
 	// 학생 회원가입(INSERT) 메소드
-			public void registStudent(StudentVO student) {
-				Connection conn = cp.getConnection();
-				int cnt = 0;
-				try {
-					cnt = dao.registStudent(conn, student);
-					System.out.println("회원가입에 성공하셨습니다.");
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					cp.releaseConnection(conn);
-				}
-				
-			}
+	public void registStudent(StudentVO student) {
+		Connection conn = cp.getConnection();
+		int cnt = 0;
+		try {
+			cnt = dao.registStudent(conn, student);
+			System.out.println("회원가입에 성공하셨습니다.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			cp.releaseConnection(conn);
+		}
+		
+	}
 	// 로그인(SELECT) 메소드
 	public StudentVO login(StudentVO student) {
 		Connection conn = cp.getConnection();
@@ -82,5 +82,18 @@ public class StudentService {
 		return result;
 	}
 	
+	// 학생 점수 증가 메소드
+	public void plusScore(String stuId) {
+		Connection conn = cp.getConnection();
+		
+		try {
+			dao.plusScore(conn,stuId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			cp.releaseConnection(conn); // 반납
+		}
+		
+	}
 	
 }

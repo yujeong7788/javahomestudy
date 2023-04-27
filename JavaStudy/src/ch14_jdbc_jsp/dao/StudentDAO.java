@@ -22,13 +22,14 @@ public class StudentDAO {
 	public ArrayList<StudentVO> getStuList(Connection conn) throws SQLException{
 		// 쿼리문 작성
 		StringBuffer query = new StringBuffer();
-		query.append("SELECT				");
-		query.append("		stu_id			");
-		query.append(" ,stu_password  AS pw	");
-		query.append("	   ,stu_name		");
-		query.append("	   ,stu_score		");
-		query.append("FROM					");
-		query.append("		students		");
+		query.append("SELECT					");
+		query.append("		stu_id				");
+		query.append(" ,stu_password  AS pw		");
+		query.append("	   ,stu_name			");
+		query.append("	   ,stu_score			");
+		query.append("FROM						");
+		query.append("		students			");
+		query.append("ORDER BY stu_score DESC	");
 		
 		// 4. 쿼리문을 보유하고 실행할 수 있는 객체 생성 // 스로우?
 		PreparedStatement ps = conn.prepareStatement(query.toString()); // 메소드 실행
@@ -168,6 +169,29 @@ public class StudentDAO {
 		
 		return result;
 		
+	}
+	
+	// 학생의 점수 증가(UPDATE) 메소드
+	public int plusScore(Connection conn, String stuId) throws SQLException {
+		
+		// 업데이트 쿼리문
+		StringBuffer query = new StringBuffer();
+		query.append("UPDATE  						");
+		query.append("		students 				");
+		query.append("SET    						");
+		query.append("    stu_score	= stu_score + 1	");
+		query.append("WHERE 1=1						"); 
+		query.append("  AND stu_id = ?				");
+		
+		PreparedStatement ps = conn.prepareStatement(query.toString());
+		
+		ps.setString(1, stuId);
+		
+		int cnt = ps.executeUpdate();
+		
+		ps.close();
+		
+		return cnt;
 	}
 
 }
