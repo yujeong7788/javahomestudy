@@ -128,7 +128,5 @@ public class MemDao {
 		return result;
 		
 	}
-	
-	// 아이디 중복 체크(SELECT) 메소드
-	
+
 }

@@ -21,8 +21,9 @@ public class BoardDao {
 		return instance;
 	}
 	
-	// 게시글 조회 (SELECT) 메소드
-	public ArrayList<BoardVO> getBoardList(Connection conn, int no) throws SQLException {
+	
+	// 그냥 게시글 조회 메소드
+	public ArrayList<BoardVO> getBoardList(Connection conn) throws SQLException{
 		// 쿼리문 작성
 		StringBuffer query = new StringBuffer();
 		query.append("SELECT							");
@@ -30,7 +31,47 @@ public class BoardDao {
 		query.append(" 		,board_title				");
 		query.append("	    ,board_content				");
 		query.append("	    ,board_author				");
-		query.append("	    ,board_date					");
+		query.append("	    ,TO_CHAR(board_date,'YYYY.MM.DD HH:MI' ) as a				");
+		query.append("FROM								");
+		query.append("		board						");
+		
+		PreparedStatement ps = conn.prepareStatement(query.toString());
+		
+		ResultSet rs = ps.executeQuery();
+		
+		ArrayList<BoardVO> result = new ArrayList<>();
+		
+		while(rs.next()) {
+			// 쿼리문 실행 결과에 해당하는 컬럼명과 일치해야한다.
+			int boardNo = rs.getInt("board_no");
+			String boardTitle = rs.getString("board_title");
+			String boardContent = rs.getString("board_content");
+			String boardAuthor = rs.getString("board_author");
+			String boardDate = rs.getString("a");
+		
+			BoardVO board = new BoardVO(boardNo, boardTitle, boardContent, boardAuthor, boardDate);
+			
+			result.add(board);
+		}
+		
+		ps.close();
+		rs.close();
+		
+		return result;
+		
+	}
+	
+	
+	// 게시글 조회 (SELECT) 메소드
+	public ArrayList<BoardVO> getNoBoardList(Connection conn, int no) throws SQLException {
+		// 쿼리문 작성
+		StringBuffer query = new StringBuffer();
+		query.append("SELECT							");
+		query.append("		board_no					");
+		query.append(" 		,board_title				");
+		query.append("	    ,board_content				");
+		query.append("	    ,board_author				");
+		query.append("	    ,TO_CHAR(board_date,'YYYY.MM.DD HH:MI' ) as a				");
 		query.append("FROM								");
 		query.append("		board						");
 		query.append("WHERE 1=1 						");
@@ -58,7 +99,7 @@ public class BoardDao {
 			String boardTitle = rs.getString("board_title");
 			String boardContent = rs.getString("board_content");
 			String boardAuthor = rs.getString("board_author");
-			String boardDate = rs.getString("board_date");
+			String boardDate = rs.getString("a");
 
 
 			

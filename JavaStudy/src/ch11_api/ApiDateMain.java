@@ -26,7 +26,7 @@ public class ApiDateMain {
 		= new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초");
 		
 		// .format의 파라미터에 Date 객체를 넣으면
-		// 해당 Date 객체의 날자에 대해 포맷을 적용한 문자열을 리턴
+		// 해당 Date 객체의 날짜에 대해 포맷을 적용한 문자열을 리턴
 		sdf.format(dateToday);
 		
 		String strToday = sdf.format(dateToday);

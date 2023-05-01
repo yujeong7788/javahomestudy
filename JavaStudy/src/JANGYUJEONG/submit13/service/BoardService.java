@@ -24,12 +24,28 @@ public class BoardService {
 	private ConnectionPool cp = ConnectionPool.getInstance();
 	
 
-	// 게시글 조회 메소드
-	public ArrayList<BoardVO> getBoardList(int no){
+	// 그냥 게시글 조회 메소드
+	public ArrayList<BoardVO> getBoardList(){
 		Connection conn = cp.getConnection();
 		ArrayList<BoardVO> result = new ArrayList<>();
 			try {
-				result = dao.getBoardList(conn,no);
+				result = dao.getBoardList(conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				cp.releaseConnection(conn);
+			}
+			return result;
+	}
+	
+	
+	
+	// 글번호로 게시글 조회 메소드
+	public ArrayList<BoardVO> getNoBoardList(int no){
+		Connection conn = cp.getConnection();
+		ArrayList<BoardVO> result = new ArrayList<>();
+			try {
+				result = dao.getNoBoardList(conn,no);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {

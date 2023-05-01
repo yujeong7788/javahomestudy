@@ -42,7 +42,7 @@ public class MemService {
 			int cnt = 0;
 			try {
 				cnt = dao.registMem(conn, member);
-				System.out.println("회원가입에 성공하셨습니다.");
+				System.out.println("회원가입이 완료되었습니다.");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {

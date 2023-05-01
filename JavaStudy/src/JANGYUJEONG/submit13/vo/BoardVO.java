@@ -1,5 +1,7 @@
 package JANGYUJEONG.submit13.vo;
 
+import java.text.SimpleDateFormat;
+
 public class BoardVO {
 	private int boardNo;
 	private String boardTitle;
@@ -7,7 +9,8 @@ public class BoardVO {
 	private String boardAuthor;
 	private String boardDate;
 	
-	public BoardVO() {}
+	public BoardVO() {
+	}
 	
 	public BoardVO(int boardNo, String boardTitle, String boardContent, String boardAuthor, String boardDate) {
 		super();
@@ -15,6 +18,10 @@ public class BoardVO {
 		this.boardTitle = boardTitle;
 		this.boardContent = boardContent;
 		this.boardAuthor = boardAuthor;
+//		System.out.println(boardDate);
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+//		String temp = sdf.format(boardDate);
+//		this.boardDate = temp;
 		this.boardDate = boardDate;
 	}
 	
