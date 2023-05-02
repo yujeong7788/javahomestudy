@@ -10,7 +10,7 @@ public class JdbcDelete {
 
 	public static void main(String[] args) {
 		// 1. 드라이버 로딩
-		// (프로젝트 내에서 단 한번만 실행이 되면 됨)
+		// (프로젝트 내에서 단 한번만 실행이 되면 됨, main이 실행될때 한번)
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			System.out.println("드라이버 등록 성공");
