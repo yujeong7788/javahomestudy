@@ -114,7 +114,7 @@ public class ApiJson {
 		System.out.println(result);
 		
 		name = (String) result.get("name");
-		System.out.println(name);
+		System.out.println("name"+name);
 		
 		// 문자열을 오브젝트로 파싱한거
 		// 파싱한 숫자는 long 타입으로 꺼내와야함
