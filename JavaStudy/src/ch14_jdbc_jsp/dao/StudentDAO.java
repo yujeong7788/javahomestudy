@@ -82,6 +82,7 @@ public class StudentDAO {
 		query.append("    ,?						");
 		query.append("    ,?						");
 		query.append("    ,?						");
+//		query.append("    ,"+name+"						");
 		query.append("  )							");
 		
 		PreparedStatement ps = conn.prepareStatement(query.toString());
