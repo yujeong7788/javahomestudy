@@ -52,6 +52,7 @@ public class MenuService {
 			}
 			return result;
 	}
+	///zjzj
 	
 	// 레시피 데이터 상세 조회 (SELECT) 메소드
 	public ArrayList<Menu> getNoMenuList(int no){
