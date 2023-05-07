@@ -67,5 +67,19 @@ public class MenuService {
 			return result;
 	}
 	
+	// 레시피 이름 뽑아오는 메소드
+			public ArrayList<Menu> getMenuListName(int no){
+				Connection conn = cp.getConnection();
+				ArrayList<Menu> result = new ArrayList<>();
+					try {
+						result = dao.getMenuListName(conn,no);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						cp.releaseConnection(conn);
+					}
+					return result;
+			}
+	
 
 }

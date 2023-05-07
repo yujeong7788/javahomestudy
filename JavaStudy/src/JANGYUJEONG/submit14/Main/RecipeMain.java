@@ -1,5 +1,6 @@
 package JANGYUJEONG.submit14.Main;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,6 +9,7 @@ import JANGYUJEONG.submit13.service.MemService;
 import JANGYUJEONG.submit13.vo.MemVO;
 import JANGYUJEONG.submit14.Service.MenuService;
 import JANGYUJEONG.submit14.Service.MyService;
+import JANGYUJEONG.submit14.VO.MyVO;
 import JANGYUJEONG.submit14.data.Menu;
 
 public class RecipeMain {
@@ -123,8 +125,20 @@ public class RecipeMain {
 							
 							System.out.println("검색 키워드를 선택해주세요");
 							System.out.println("1. 재료 | 2. 종류 ");
-							System.out.println(">>>");
+							System.out.println(">>> ");
 							
+							int selectSearch = Integer.parseInt(scan.nextLine());
+							
+							if(selectSearch == 1) {
+								System.out.println("재료명을 입력해주세요");
+								System.out.print(">>> ");
+								String ingredient = scan.nextLine();
+								
+							}else if(selectSearch == 2){
+								System.out.println("종류 번호를 선택해주세요");
+								System.out.println("1. 국&찌개 | 2. 반찬 | 3. 일품 | 4. 밥 | 5. 후식 ");
+								System.out.print(">>> ");
+							}
 							
 						}else if(select == 3) {
 							//TODO 즐겨찾기
@@ -148,11 +162,20 @@ public class RecipeMain {
 								
 								int registerNo = Integer.parseInt(scan.nextLine());
 								
+								String selectName = "";
+								// no받아서 name만 가져오자
+								ArrayList<Menu> selectNmae = menuService.getNoMenuList(registerNo);
+								for(int i = 0; i < selectNmae.size(); i++) {
+									selectName =  selectNmae.get(i).getName();
+								}
+								MyVO my = new MyVO(0,login.getMemId(),selectName);
+								try {
+									myService.registMy(my);
+								} catch (SQLException e) {
+									e.printStackTrace();
+								}
 								
-								// no받아서 name만 뽑아오는 메소드를 만들어볼까..?ㅠㅠ 어렵ㄸ...
 								
-								
-								registMy(0,login.getMemId(),여기에는 선택한 레시피 네임들어가야함);
 							}
 							
 							

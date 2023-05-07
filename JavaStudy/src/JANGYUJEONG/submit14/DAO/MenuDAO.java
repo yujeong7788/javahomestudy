@@ -69,7 +69,7 @@ public class MenuDAO {
 		}
 		
 		// 레시피 이름 뽑아오는 메소드 ( 수정중@@)
-		public String getMenuListName(Connection conn, int no) throws SQLException {
+		public ArrayList<Menu> getMenuListName(Connection conn, int no) throws SQLException {
 			// 쿼리문 작성
 			StringBuffer query = new StringBuffer();
 			query.append("SELECT							");
