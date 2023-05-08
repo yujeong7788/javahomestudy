@@ -66,19 +66,19 @@ public class MyDAO {
 	public ArrayList<JoinVO> starMenuList(Connection conn,String memId) throws SQLException {
 		// 쿼리문 작성
 		StringBuffer query = new StringBuffer();
-		query.append("SELECT							");
+		query.append("SELECT							   ");
 		query.append("		c.rec_name					");
 		query.append(" 		,rec_no						");
-		query.append("	    ,rec_type					");
-		query.append("	    ,rec_ing					");
+		query.append("	    ,rec_type				    	");
+		query.append("	    ,rec_ing				    	");
 		query.append("	    ,rec_author					");
 		query.append("	    ,rec_menual					");
-		query.append("	    ,a.mem_id					");
-		query.append("FROM								");
-		query.append("		member a					");
+		query.append("	    ,a.mem_id				    	");
+		query.append("FROM							    	");
+		query.append("		member a				     	");
 		query.append("		,star b						");
 		query.append("		,recipe5 c					");
-		query.append("WHERE 1=1 						");
+		query.append("WHERE 1=1 					     	");
 		query.append("	AND a.mem_id = b.mem_id 		");
 		query.append("	AND b.rec_name = c.rec_name 	");
 		query.append("	AND a.mem_id = ? 				");
@@ -122,34 +122,34 @@ public class MyDAO {
 	
 	
 	// 즐겨찾기 삭제 메소드
-			public int deleteMy(Connection conn, MyVO my) throws SQLException {
-				
-				MemService memService = MemService.getInstance();
-				MenuService menuService = MenuService.getInstance();
-				
-				
-				
-				StringBuffer query = new StringBuffer();
-				query.append("DELETE 							");
-				query.append("	     star						");
-				query.append("WHERE 1=1							");
-				query.append("  AND mem_id = ?					");
-				query.append("  AND rec_name = ?					");
-				
-				PreparedStatement ps = conn.prepareStatement(query.toString());
-				
-				int idx = 1;
-				ps.setString(idx++, my.getMemId());
-				ps.setString(idx++, my.getRecName());
-				
-				
-				int cnt = ps.executeUpdate();
-				
-				ps.close();
-				
-				return cnt;
-				
-			}
+	public int deleteMy(Connection conn, MyVO my) throws SQLException {
+		
+		MemService memService = MemService.getInstance();
+		MenuService menuService = MenuService.getInstance();
+		
+		
+		
+		StringBuffer query = new StringBuffer();
+		query.append("DELETE 							");
+		query.append("	     star						");
+		query.append("WHERE 1=1							");
+		query.append("  AND mem_id = ?					");
+		query.append("  AND rec_name = ?					");
+		
+		PreparedStatement ps = conn.prepareStatement(query.toString());
+		
+		int idx = 1;
+		ps.setString(idx++, my.getMemId());
+		ps.setString(idx++, my.getRecName());
+		
+		
+		int cnt = ps.executeUpdate();
+		conn.commit();
+		ps.close();
+		
+		return cnt;
+		
+	}
 	
 		
 

@@ -58,7 +58,7 @@ public class MyService {
 		Connection conn = cp.getConnection();
 		int cnt = 0;
 		try {
-			cnt = dao.registMy(conn, my);
+			cnt = dao.deleteMy(conn, my);
 			System.out.println("레시피가 즐겨찾기에서 삭제 되었습니다.");
 		} catch (SQLException e) {
 			e.printStackTrace();
