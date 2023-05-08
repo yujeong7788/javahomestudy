@@ -27,17 +27,17 @@ public class MenuService {
 	
 	// 레시피 데이터 삽입 (INSERT) 메소드
 	public void registAll(Menu menu) {
-			Connection conn = cp.getConnection();
-			int cnt = 0;
-			try {
-				cnt = dao.registAll(conn, menu);
-				System.out.println("데이터 삽입 성공");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				cp.releaseConnection(conn);
-			}
+		Connection conn = cp.getConnection();
+		int cnt = 0;
+		try {
+			cnt = dao.registAll(conn, menu);
+			System.out.println("데이터 삽입 성공");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			cp.releaseConnection(conn);
 		}
+	}
 	
 	// 레시피 데이터 전체 조회 (SELECT) 메소드
 	public ArrayList<Menu> getMenuList(){
@@ -52,7 +52,6 @@ public class MenuService {
 			}
 			return result;
 	}
-	///zjzj
 	
 	// 레시피 데이터 상세 조회 (SELECT) 메소드
 	public ArrayList<Menu> getNoMenuList(int no){
@@ -69,18 +68,31 @@ public class MenuService {
 	}
 	
 	// 레시피 이름 뽑아오는 메소드
-			public ArrayList<Menu> getMenuListName(int no){
-				Connection conn = cp.getConnection();
-				ArrayList<Menu> result = new ArrayList<>();
-					try {
-						result = dao.getMenuListName(conn,no);
-					} catch (SQLException e) {
-						e.printStackTrace();
-					} finally {
-						cp.releaseConnection(conn);
-					}
-					return result;
+	public ArrayList<Menu> getMenuListName(int no){
+		Connection conn = cp.getConnection();
+		ArrayList<Menu> result = new ArrayList<>();
+			try {
+				result = dao.getMenuListName(conn,no);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				cp.releaseConnection(conn);
 			}
+			return result;
+	}
 	
+	// 레시피 작성 (INSERT) 메소드
+	public void registRec(Menu menu) {
+		Connection conn = cp.getConnection();
+		int cnt = 0;
+		try {
+			cnt = dao.registRec(conn, menu);
+			System.out.println("레시피 작성 완료");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			cp.releaseConnection(conn);
+		}
+	}
 
 }

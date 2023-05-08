@@ -44,7 +44,7 @@ public class ConnectionFactory {
 		// 1. 드라이버 로딩
 		try {
 			Class.forName(driver);
-			System.out.println("드라이버 등록 성공");
+//			System.out.println("드라이버 등록 성공");
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 등록 실패");
 			System.exit(0); // 현재 프로그램 종료

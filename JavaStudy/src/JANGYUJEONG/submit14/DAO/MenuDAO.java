@@ -33,7 +33,7 @@ public class MenuDAO {
 	 * */
 		public int registAll(Connection conn, Menu menu) throws SQLException {
 			StringBuffer query = new StringBuffer();
-			query.append("INSERT INTO recipe (				");
+			query.append("INSERT INTO recipe5 (				");
 			query.append("		 rec_no						");
 			query.append("		,rec_name					");
 			query.append(" 		,rec_type					");
@@ -41,7 +41,7 @@ public class MenuDAO {
 			query.append("	    ,rec_author					");
 			query.append("	    ,rec_menual					");
 			query.append("	) VALUES (						");
-			query.append("     (SELECT COUNT(*)+1 FROM recipe)");
+			query.append("     (SELECT COUNT(*)+1 FROM recipe5)");
 			query.append("    ,?							");
 			query.append("    ,?							");
 			query.append("    ,?							");
@@ -68,7 +68,7 @@ public class MenuDAO {
 			
 		}
 		
-		// 레시피 이름 뽑아오는 메소드 ( 수정중@@)
+		// 레시피 이름 뽑아오는 메소드
 		public ArrayList<Menu> getMenuListName(Connection conn, int no) throws SQLException {
 			// 쿼리문 작성
 			StringBuffer query = new StringBuffer();
@@ -80,7 +80,7 @@ public class MenuDAO {
 			query.append("	    ,rec_author					");
 			query.append("	    ,rec_menual					");
 			query.append("FROM								");
-			query.append("		recipe						");
+			query.append("		recipe5						");
 			query.append("WHERE 1=1 						");
 			query.append("	AND rec_no = ? 					");
 			
@@ -133,7 +133,7 @@ public class MenuDAO {
 			query.append("	    ,rec_author					");
 			query.append("	    ,rec_menual					");
 			query.append("FROM								");
-			query.append("		recipe						");
+			query.append("		recipe5						");
 			
 			// 4. 쿼리문을 보유하고 실행할 수 있는 객체 생성 
 			PreparedStatement ps = conn.prepareStatement(query.toString()); // 메소드 실행
@@ -180,7 +180,7 @@ public class MenuDAO {
 			query.append("	    ,rec_author					");
 			query.append("	    ,rec_menual					");
 			query.append("FROM								");
-			query.append("		recipe						");
+			query.append("		recipe5						");
 			query.append("WHERE 1=1 						");
 			query.append("	AND rec_no = ? 					");
 			
@@ -218,6 +218,44 @@ public class MenuDAO {
 			rs.close();
 			
 			return result;
+		}
+		
+		
+		// 레시피 작성 (INSERT) 메소드
+		public int registRec(Connection conn, Menu menu) throws SQLException {
+			StringBuffer query = new StringBuffer();
+			query.append("INSERT INTO recipe5 (					");
+			query.append("		 rec_no							");
+			query.append("		,rec_name						");
+			query.append(" 		,rec_type						");
+			query.append("	    ,rec_ing						");
+			query.append("	    ,rec_author						");
+			query.append("	    ,rec_menual						");
+			query.append("	) VALUES (							");
+			query.append("     (SELECT COUNT(*)+1 FROM recipe5)	");
+			query.append("    ,?								");
+			query.append("    ,?								");
+			query.append("    ,?								");
+			query.append("    ,?								");
+			query.append("    ,?								");
+			query.append("  )									");
+			
+			PreparedStatement ps = conn.prepareStatement(query.toString());
+			
+			int idx = 1;
+			ps.setString(idx++, menu.getName());
+			ps.setString(idx++, menu.getType());
+			ps.setString(idx++, menu.getParts());
+			ps.setString(idx++, menu.getAuthor());
+			ps.setString(idx++, menu.getManual());
+			
+			
+			int cnt = ps.executeUpdate();
+			
+			ps.close();
+			
+			return cnt;
+			
 		}
 
 }
